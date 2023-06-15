@@ -35,5 +35,16 @@ class TestSentence(unittest.TestCase):
         self.assertEqual(test_sentence.cells, {(0,0),(1,1)})
         self.assertEqual(test_sentence.count, 1)
 
+    def test_mark_safe(self):
+        test_sentence  = Sentence({(0,0),(1,1)},1)
+        test_sentence.mark_safe((0,0))
+        self.assertEqual(test_sentence.cells, {(1,1)})
+        self.assertEqual(test_sentence.count, 1)
+
+        test_sentence  = Sentence({(0,0),(1,1)},1)
+        test_sentence.mark_safe((2,2))
+        self.assertEqual(test_sentence.cells, {(0,0),(1,1)})
+        self.assertEqual(test_sentence.count, 1)
+
 if __name__ == '__main__':
     unittest.main()
